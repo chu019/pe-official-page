@@ -19,6 +19,7 @@
   --txt:#e8eaf2; --muted:#9aa1b5; --dim:#6b7288;
   --teal:#2dd4bf; --violet:#a78bfa; --amber:#fbbf24; --green:#4ade80; --pink:#f472b6;
   --orange:#fb923c; --lime:#a3e635; --gold:#fcd34d; --emerald:#34d399; --cyan:#22d3ee;
+  --blurple:#5865F2; --blurple-l:#7c86ff;
   --mono:'JetBrains Mono',monospace; --disp:'Silkscreen',monospace; --body:'Space Grotesk',sans-serif;
   --clip:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
   --clip-s:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px);
@@ -49,10 +50,15 @@ nav .inner{max-width:1160px;margin:auto;display:flex;align-items:center;justify-
 nav.scrolled{background:rgba(5,6,10,.84);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .brand{font-family:var(--disp);font-size:12px;letter-spacing:.08em;color:#fff;text-decoration:none;display:flex;align-items:center;gap:11px;white-space:nowrap}
 .brand .dot{width:9px;height:9px;background:var(--teal);box-shadow:0 0 10px var(--teal);flex:none}
+.nav-right{display:flex;align-items:center;gap:12px}
 nav ul{display:flex;gap:32px;list-style:none;align-items:center}
 nav ul a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:color .25s}
 nav ul a:hover,nav ul a.active{color:#fff}
 nav ul a.active{text-shadow:0 0 14px rgba(45,212,191,.7)}
+.nav-discord{display:flex;align-items:center;justify-content:center;width:34px;height:34px;flex:none;
+  background:var(--blurple);color:#fff;clip-path:var(--clip-s);transition:.25s}
+.nav-discord .pxicon{width:16px;height:16px}
+.nav-discord:hover{background:var(--blurple-l);transform:translateY(-2px);filter:drop-shadow(0 4px 14px rgba(88,101,242,.55))}
 .nav-burger{display:none;flex-direction:column;gap:6px;background:none;border:0;cursor:pointer;padding:8px}
 .nav-burger span{width:24px;height:2px;background:#fff;transition:.3s}
 .nav-burger.open span:first-child{transform:translateY(4px) rotate(45deg)}
@@ -66,8 +72,14 @@ nav ul a.active{text-shadow:0 0 14px rgba(45,212,191,.7)}
 .btn-primary:hover{background:#6ff0dd;transform:translateY(-2px);filter:drop-shadow(0 6px 22px rgba(45,212,191,.45))}
 .btn-ghost{color:var(--txt);border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.02)}
 .btn-ghost:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+.btn-discord{background:var(--blurple);color:#fff;border-color:var(--blurple)}
+.btn-discord .pxicon{width:17px;height:17px}
+.btn-discord:hover{background:var(--blurple-l);transform:translateY(-2px);filter:drop-shadow(0 6px 22px rgba(88,101,242,.55))}
+@keyframes dcpulse{0%,100%{filter:drop-shadow(0 0 7px rgba(88,101,242,.65))}50%{filter:drop-shadow(0 0 2px rgba(88,101,242,.15))}}
+.cta-row .btn-discord{animation:dcpulse 2.6s ease-out infinite}
 .btn-sm{padding:11px 18px;font-size:10.5px}
 .arr{font-family:var(--mono)}
+.dl-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
 /* ---------- hero ---------- */
 #hero{min-height:100svh;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;
@@ -289,9 +301,12 @@ h2{font-size:clamp(30px,4.4vw,48px);line-height:1.1;letter-spacing:-.02em;font-w
 /* ---------- footer ---------- */
 footer{border-top:1px solid var(--line);padding:46px 0 54px}
 .ft-top{display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap}
-.ft-links{display:flex;gap:28px;flex-wrap:wrap}
+.ft-links{display:flex;gap:28px;flex-wrap:wrap;align-items:center}
 .ft-links a{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:.25s}
 .ft-links a:hover{color:var(--teal)}
+.ft-discord{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;background:var(--blurple);color:#fff!important;clip-path:var(--clip-s);transition:.25s}
+.ft-discord .pxicon{width:13px;height:13px}
+.ft-discord:hover{background:var(--blurple-l);filter:drop-shadow(0 4px 12px rgba(88,101,242,.5))}
 .ft-bottom{margin-top:34px;padding-top:26px;border-top:1px solid rgba(255,255,255,.05);
   display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#4c5266}
@@ -353,15 +368,18 @@ footer{border-top:1px solid var(--line);padding:46px 0 54px}
 <nav id="nav">
   <div class="inner">
     <a class="brand" href="#hero"><span class="dot"></span>PROJECT ETERNITY</a>
-    <ul id="navLinks">
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="#disciplines">Disciplines</a></li>
-      <li><a href="#sciences">Sciences</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#journey">The Journey</a></li>
-      <li><a class="btn btn-primary btn-sm" style="margin-left:6px" href="https://www.curseforge.com/minecraft/modpacks/project-eternity-a-new-vision-chu-019" target="_blank" rel="noopener">Download <span class="arr">↗</span></a></li>
-    </ul>
-    <button class="nav-burger" id="burger" aria-label="Toggle menu"><span></span><span></span></button>
+    <div class="nav-right">
+      <ul id="navLinks">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#disciplines">Disciplines</a></li>
+        <li><a href="#sciences">Sciences</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#journey">The Journey</a></li>
+        <li><a class="btn btn-primary btn-sm" style="margin-left:6px" href="https://www.curseforge.com/minecraft/modpacks/project-eternity-a-new-vision-chu-019" target="_blank" rel="noopener">Download <span class="arr">↗</span></a></li>
+      </ul>
+      <a class="nav-discord" href="https://discord.gg/6AYfTBWrP" target="_blank" rel="noopener" aria-label="Join the Discord" title="Join the Discord"><span class="pxicon" data-icon="discord"></span></a>
+      <button class="nav-burger" id="burger" aria-label="Toggle menu"><span></span><span></span></button>
+    </div>
   </div>
 </nav>
 
@@ -373,7 +391,7 @@ footer{border-top:1px solid var(--line);padding:46px 0 54px}
   <span class="side-label r">CURSEFORGE // MINECRAFT</span>
 
   <div class="hero-inner">
-    <span class="eyebrow h-an" style="animation-delay:.1s">Official Page — v0.3-F</span>
+    <span class="eyebrow h-an" style="animation-delay:.1s">Official Page — v0.4-A</span>
 
     <div class="logo-wrap h-an" style="animation-delay:.28s">
       <!-- Your imported logo — place "logo.png" next to this file -->
@@ -388,6 +406,7 @@ footer{border-top:1px solid var(--line);padding:46px 0 54px}
 
     <div class="cta-row h-an" style="animation-delay:.62s">
       <a class="btn btn-primary" href="https://www.curseforge.com/minecraft/modpacks/project-eternity-a-new-vision-chu-019" target="_blank" rel="noopener">Download on CurseForge <span class="arr">↗</span></a>
+      <a class="btn btn-discord" href="https://discord.gg/6AYfTBWrP" target="_blank" rel="noopener"><span class="pxicon" data-icon="discord"></span>Join the Discord</a>
       <a class="btn btn-ghost" href="#disciplines">Explore the Disciplines</a>
     </div>
 
@@ -624,42 +643,42 @@ footer{border-top:1px solid var(--line);padding:46px 0 54px}
         <img src="screenshot-1.jpg" alt="Custom multiblock — advanced processing array" onerror="this.parentElement.classList.add('noimg')">
         <div class="ph"><span>screenshot-1.jpg</span><em>place this file next to the HTML</em></div>
         <span class="zoom">+</span>
-        <figcaption><span>Multiblock // 01</span><span class="acc">Advanced Processing Array</span></figcaption>
+        <figcaption><span>Multiblock // 01</span><span class="acc">Hephaestus Forge (Industrialized)</span></figcaption>
       </figure>
 
       <figure class="gal-item" data-reveal style="transition-delay:.1s">
         <img src="screenshot-2.jpg" alt="Custom multiblock — modular frame structure" onerror="this.parentElement.classList.add('noimg')">
         <div class="ph"><span>screenshot-2.jpg</span><em>place this file next to the HTML</em></div>
         <span class="zoom">+</span>
-        <figcaption><span>Multiblock // 02</span><span class="acc">Modular Frame Structure</span></figcaption>
+        <figcaption><span>Multiblock // 02</span><span class="acc">Neural Compiler Multiblock</span></figcaption>
       </figure>
 
       <figure class="gal-item" data-reveal style="transition-delay:.2s">
         <img src="screenshot-3.jpg" alt="Custom multiblock — industrial power works" onerror="this.parentElement.classList.add('noimg')">
         <div class="ph"><span>screenshot-3.jpg</span><em>place this file next to the HTML</em></div>
         <span class="zoom">+</span>
-        <figcaption><span>Multiblock // 03</span><span class="acc">Industrial Power Works</span></figcaption>
+        <figcaption><span>Multiblock // 03</span><span class="acc">Awakening Altar Multiblock</span></figcaption>
       </figure>
 
       <figure class="gal-item wide" data-reveal>
         <img src="quests-1.jpg" alt="Quest network — chapter progression web" onerror="this.parentElement.classList.add('noimg')">
         <div class="ph"><span>quests-1.jpg</span><em>place this file next to the HTML</em></div>
         <span class="zoom">+</span>
-        <figcaption><span>Quest Network // 01</span><span class="acc">Industrial Foregoing Quest Chapter</span></figcaption>
+        <figcaption><span>Quest Network // 01</span><span class="acc">INDUSTRIAL FOREGOING QUEST CHAPTER</span></figcaption>
       </figure>
 
       <figure class="gal-item wide" data-reveal>
         <img src="quests-2.jpg" alt="Quest network — discipline map" onerror="this.parentElement.classList.add('noimg')">
         <div class="ph"><span>quests-2.jpg</span><em>place this file next to the HTML</em></div>
         <span class="zoom">+</span>
-        <figcaption><span>Quest Network // 02</span><span class="acc">Simulation Technology</span></figcaption>
+        <figcaption><span>Quest Network // 02</span><span class="acc">SIMULATION TECHNOLOGY</span></figcaption>
       </figure>
 
       <figure class="gal-item wide" data-reveal>
         <img src="quests-3.jpg" alt="Quest network — late-game web" onerror="this.parentElement.classList.add('noimg')">
         <div class="ph"><span>quests-3.jpg</span><em>place this file next to the HTML</em></div>
         <span class="zoom">+</span>
-        <figcaption><span>Quest Network // 03</span><span class="acc">Biological Engineering</span></figcaption>
+        <figcaption><span>Quest Network // 03</span><span class="acc">BIOLOGICAL ENGINEERING</span></figcaption>
       </figure>
     </div>
   </div>
@@ -693,10 +712,13 @@ footer{border-top:1px solid var(--line);padding:46px 0 54px}
 <section id="download">
   <div class="wrap">
     <div class="dl-panel" data-reveal>
-      <span class="sec-tag" style="justify-content:center;display:inline-flex">SEC.06 // Launch — v0.3-F</span>
+      <span class="sec-tag" style="justify-content:center;display:inline-flex">SEC.06 // Launch — v0.4-A</span>
       <h2 class="dl-title">READY, <span>ENGINEER?</span></h2>
       <p class="sub">The ascent from conventional industry to the Eternity Star is waiting. Take the first step — play <b>PROJECT ETERNITY</b> now.</p>
-      <a class="btn btn-primary" style="font-size:14px;padding:19px 38px" href="https://www.curseforge.com/minecraft/modpacks/project-eternity-a-new-vision-chu-019" target="_blank" rel="noopener">Download on CurseForge <span class="arr">↗</span></a>
+      <div class="dl-btns">
+        <a class="btn btn-primary" style="font-size:14px;padding:19px 38px" href="https://www.curseforge.com/minecraft/modpacks/project-eternity-a-new-vision-chu-019" target="_blank" rel="noopener">Download on CurseForge <span class="arr">↗</span></a>
+        <a class="btn btn-discord" href="https://discord.gg/6AYfTBWrP" target="_blank" rel="noopener"><span class="pxicon" data-icon="discord"></span>Join the Discord</a>
+      </div>
       <p class="dl-note">Free to play — Minecraft: Java Edition — CurseForge App recommended</p>
     </div>
   </div>
@@ -710,8 +732,8 @@ footer{border-top:1px solid var(--line);padding:46px 0 54px}
       <a class="brand" href="#hero"><span class="dot"></span>PROJECT ETERNITY <span style="color:var(--dim);font-family:var(--mono);font-size:10px;letter-spacing:.2em">— A NEW VISION</span></a>
       <div class="ft-links">
         <a href="https://www.curseforge.com/minecraft/modpacks/project-eternity-a-new-vision-chu-019" target="_blank" rel="noopener">CurseForge ↗</a>
+        <a class="ft-discord" href="https://discord.gg/6AYfTBWrP" target="_blank" rel="noopener"><span class="pxicon" data-icon="discord"></span>Discord</a>
         <a href="#disciplines">Disciplines</a>
-        <a href="#sciences">Sciences</a>
         <a href="#gallery">Gallery</a>
         <a href="#hero">Back to top ↑</a>
       </div>
@@ -743,7 +765,8 @@ net:["................","................","..##.......##...","..##.......##..."
 spark:[".......##.......",".......##.......",".......##.......","...#...##...#...","...#...##...#...","....#..##..#....",".....#.##.#.....",".....######.....",".....######.....",".....#.##.#.....","....#..##..#....","...#...##...#...","...#...##...#...",".......##.......",".......##.......",".......##......."],
 eye:["................","................","................",".....######.....","...##......##...","..#....##....#..",".#....####....#.",".#....####....#.","..#....##....#..","...##......##...",".....######.....","................","................","................","................","................"],
 lock:["................","......####......",".....##..##.....",".....##..##.....","....########....","....##....##....","....##....##....","....##....##....","....##....##....","....########....","....########....","................","................","................","................","................"],
-bolt:["..........####..",".........####...","........####....",".......#####....","......#####.....",".....######.....","....######......","...#######......","....######......",".....#####......","......####......",".....####.......","....####........","...####.........","..####..........","................"]
+bolt:["..........####..",".........####...","........####....",".......#####....","......#####.....",".....######.....","....######......","...#######......","....######......",".....#####......","......####......",".....####.......","....####........","...####.........","..####..........","................"],
+discord:["................","...##########...","..#..........#..",".#............#.",".#..##....##..#.",".#..##....##..#.",".#............#.",".#............#.",".#............#.","..#..........#..","...##......##...","....########....","................","................","................","................"]
 };
 document.querySelectorAll('[data-icon]').forEach(el=>{
   const rows=ICONS[el.dataset.icon]; if(!rows) return;
